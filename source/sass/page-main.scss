@@ -1,0 +1,11 @@
+.page-main__container {
+  display: flex;
+
+
+}
+
+.page-main {
+  @include media(mobile) {
+    padding-top: 78px;
+  }
+}

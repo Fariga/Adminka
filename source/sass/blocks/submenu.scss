@@ -1,0 +1,34 @@
+.submenu {
+  background-color: $color-brown-7;
+  padding: 16px 10px 16px 10px;
+  margin-left: -25px;
+  margin-right: -11px;
+  display: none;
+}
+
+.submenu__item {
+  text-align: end;
+  &:active {
+    background-color: $color-brown-4;
+  }
+}
+
+.submenu__link {
+  font-family: $main-font;
+  font-size: 16px;
+  line-height: 2.44;
+  letter-spacing: -0.32px;
+  color: $color-brown-8;
+
+  @include media(mobile) {
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  &:hover,
+  &:active {
+    color: $color-orange;
+  }
+
+  
+}

@@ -1,0 +1,52 @@
+
+.alert__container {
+  padding: 29px 60px 28px 30px;
+  position: relative;
+
+  &:not(:last-of-type) {
+    margin-bottom: 2px;
+  }
+}
+
+.alert__text {
+  color: $color-white;
+  letter-spacing: -0.28px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    
+    width: 26px;
+    height: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 28px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .alert__warning & {
+      background-image: url('/img/alert.png');
+      width: 27px;
+      height: 27px;
+    }
+
+    .alert__success & {
+      background-image: url('/img/check.png');
+    }
+
+    .alert__danger & {
+      background-image: url('/img/error.png');
+    }
+  }
+}
+
+.alert__warning {
+  background-color: $color-peach;
+}
+
+.alert__success {
+  background-color: $color-green;
+}
+.alert__danger {
+  background-color: $color-pink;
+}

@@ -1,0 +1,403 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"></script>
+<script src="https://www.chartjs.org/samples/2.9.4/utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+<script>
+  $('.sidebar-menu__item--btn').on('click', function() {
+    $(this).find('.submenu').toggleClass('submenu--open');
+    $(this).toggleClass('sidebar-menu__item--btn--open');
+  } );
+
+  $('.header-nav__btn').on('click', () => {$('.header-nav').toggleClass('header-nav--open'); $('.sidebar-menu').toggleClass('sidebar-menu--open');} );
+</script>
+
+<script>
+  const lineWidth = 1;
+  //const labels = ['Jan','Feb','Mar','Apr','','','','','','','',''];//Samples.utils.months({count: 12);
+  const dataline = {
+    labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec', ''],
+    datasets: [{
+                  label: "Creme",
+                  data: [18, 42, 90, 55, 40, 62, 87, 70, 73, 78, 71, 58, 40],
+                  fill: false,
+                  borderColor: 'rgb(237, 225, 218)',
+                  tension: 0.1, 
+                  pointBorderColor: 'rgb(237, 225, 218)',
+                  pointBackgroundColor: 'rgb(237, 225, 218)',
+                  pointRadius: [0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0],
+                  borderWidth: lineWidth, 
+                  tension: 0.3,             
+              }, {
+                  label: "Orange",
+                  data: [10, 32, 50, 58, 48, 35, 30, 42, 62, 81, 95, 98, 90],
+                  fill: false,
+                  borderColor: 'rgb(221, 125, 74)',
+                  tension: 0.1,
+                  pointBorderColor: 'rgb(221, 125, 74)',
+                  pointBackgroundColor: 'rgb(221, 125, 74)',
+                  pointRadius: [0, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 0], 
+                  borderWidth: lineWidth, 
+                  tension: 0.3,                
+              }
+        ]
+  };
+
+  const datapie = {
+    labels: [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun'
+    ],
+    datasets: [{
+      label: 'My First Dataset',
+      data: [100, 50, 100, 100, 100, 1],
+      backgroundColor: [
+        'rgb(156, 145, 138)',
+        'rgb(124, 112, 106)',
+        'rgb(133, 119, 111, 0.7)',
+        'rgb(112, 100, 93)',
+        'rgba(137, 109, 94, 0.3)',
+        'rgb'
+      ],
+      borderColor: [
+        'rgb(156, 145, 138)',
+        'rgb(124, 112, 106)',
+        'rgb(133, 119, 111, 0.7)',
+        'rgb(112, 100, 93)',
+        'rgba(137, 109, 94, 0.3)',
+        'rgb' 
+      ],
+      borderWidth: 0,
+      hoverOffset: 4
+    }]
+  };
+   
+// const labels = Samples.utils.months({count: 7}); если нужны месяцы
+  const datahorizontal = {
+  labels: ['Membership','Leads','Page Views','From Search Engines'],
+  datasets: [{
+    axis: 'y',
+    label: 'My First Dataset',
+    barPercentage: 0.7,
+    data: [65, 59, 80, 60],
+    fill: false,
+    backgroundColor: [
+      'rgb(221, 125, 74)',
+      'rgb(221, 219, 74)',
+      'rgb(74, 174, 221)',
+      'rgb(221, 74, 74)'
+    ],
+    borderColor: [
+      'rgb(156, 145, 138)',
+      'rgb(156, 145, 138)',
+      'rgb(156, 145, 138)',
+      'rgb(156, 145, 138)'
+    ],
+    borderWidth: 1
+  }]
+};
+
+  const labels = Samples.utils.months({count: 3});
+  const datavertical = {
+    labels: labels,
+    datasets: [
+    { 
+      label: 'My First Dataset',
+      barThickness: 20,
+      data: [55, 55, 55],
+      backgroundColor: [
+        'rgb(221, 74, 74)',
+        'rgb(221, 74, 74)',
+        'rgb(221, 74, 74)'
+      ],
+      
+      borderWidth: 0
+    },
+    { 
+      label: 'My First Dataset',
+      barThickness: 20,
+      data: [39, 39, 39],
+      backgroundColor: [
+        'rgb(74, 174, 221)',
+        'rgb(74, 174, 221)',
+        'rgb(74, 174, 221)'
+      ],
+      
+      borderWidth: 0
+    },
+    { 
+      label: 'My First Dataset',
+      barThickness: 20,
+      data: [72, 72, 72],
+      backgroundColor: [
+        'rgb(221, 219, 74)',
+        'rgb(221, 219, 74)',
+        'rgb(221, 219, 74)'
+      ],
+      
+      borderWidth: 0
+    },
+  ]
+  };
+  const legendMargin = {
+    id: 'legendMargin',
+    beforeInit(chart, legend, options) {
+      const fitValue = chart.legend.fit;
+      chart.legend.fit = function fit() {
+        fitValue.bind(chart.legend)();
+        this.width = 75;
+        this.height = -75;
+      }
+    }
+  };
+
+  const configLine = {
+    type: 'line',
+    data: dataline,
+    options: {
+        plugins: {
+            legend: {
+                display: false,
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                  display: false,
+                  drawBorder: false,
+                  offset: true
+                },
+              ticks: {
+                format: {
+                  style: 'percent'
+                },
+                color: 'rgb(182, 179, 177)',
+                font: {
+                  size: 14,
+                  lineHeight: 2,
+                },
+              },  
+            },
+             y: {
+                display: true,
+                grid: {
+                  display: false,
+                  drawBorder: false,
+                },
+                min: 0,
+                max: 100,               
+                ticks: {
+                  format: {
+                  style: 'percent'
+                },
+                    maxTicksLimit: 6,
+                    callback: function(value, index, ticks) {
+                        return value+"%";
+                    },
+                    color: 'rgb(182, 179, 177)',
+                    font: {
+                      size: 14,
+                      lineHeight: 2,
+                    },
+                },
+              },           
+            /*y: {
+                ticks: {
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, ticks) {
+                        return value+"%";
+                    }
+                }
+            }*/
+        }      
+        }
+  };
+
+  const configPie = {
+    type: 'pie',
+    data: datapie,
+    
+    options: {
+      devicePixelRatio: 1,
+      radius:  "110",
+      plugins: {
+        legend: {
+          position: 'left',
+          labels: {
+            padding: 15,
+            usePointStyle: true,
+            pointStyle: 'circle',
+            pointStyleWidth: 12,
+            color: 'rgb(190, 185, 182)',
+            font: {
+              size: 12,
+              lineHeight: 1.5,
+              fontFamily: 'Arial'
+            }
+          }
+        }
+      }
+    },
+    plugins: [legendMargin]
+  };
+
+  const configHorizontal = {
+    type: 'bar',
+    data: datahorizontal,
+    plugins: [ChartDataLabels],  
+    options: {
+      plugins: {
+            legend: {
+                display: false  //убрать заголовок//
+            },
+            datalabels: {
+                    formatter: function(value, ctx) {
+                        return value+ "%";
+                    },
+                    font: {
+                        weight: "normal"
+                    },
+                    color: "#fff"
+                }                 
+          },
+      scales: {
+            x: {
+              min: 0,
+              max: 100,              
+              grid: {
+                  display: false,
+                  drawBorder: false
+              },
+              ticks: {
+                display: false  //убрать текст под осью//
+              },
+            },
+            y: {
+              grid: {
+                  display: false,  //убрать сетку осей//
+                  drawBorder: false  //убрать направляющие//
+              },
+ 
+              ticks: {
+                crossAlign: "far",      //выравниваем вдоль оси У//
+                color: 'rgb(255, 255, 255)',
+                font: {
+                  size: 16,
+                  lineHeight: 2,
+                  fontFamily: 'Arial'
+                },
+              },
+            },  
+      }, 
+      indexAxis: 'y',
+    }
+  };
+
+  const chartAreaBorder = {
+    id: 'chartAreaBorder',
+    afterDatasetsDraw(chart, args, options) {
+      const {ctx, chartArea: {left, top, right, bottom, width, height}} = chart;
+      ctx.save();
+      
+      ctx.strokeStyle = options.borderColor;
+      ctx.lineWidth = options.borderWidth;
+      //ctx.setLineDash(options.borderDash || []);
+      ctx.lineDashOffset = options.borderDashOffset;
+      ctx.strokeRect(left, top, right - 12, bottom, width, height);
+      ctx.restore();
+    }
+  };
+
+  const configVertical = {
+    type: 'bar',
+    data: datavertical,
+    plugins: [chartAreaBorder],
+    options: {
+      plugins: {
+              legend: {
+                  display: false
+              },
+              chartAreaBorder: {
+                borderColor: 'rgb(156, 145, 138)',
+                borderWidth: 1,
+                //borderDash: [5, 5],
+              // borderDashOffset: 0,
+        }
+            },
+      scales: {
+        x: {
+          grid: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          display: false
+        },
+      },
+
+        y: { 
+          min: 0,  //min значение
+          max: 100, //max значение
+          beginAtZero: true,
+          grid: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          display: false
+          },
+        },
+      }
+    },
+  };
+
+  const myChartEl = document.getElementById('myChart');
+
+  if (myChartEl) {
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      configLine
+    );
+  }
+
+  const pieChartEl = document.getElementById('pieChart');
+
+  if (pieChartEl) {
+    const pieChart = new Chart(
+      document.getElementById('pieChart'),
+      configPie
+    );
+  }
+  
+  const horizontalChartEl = document.getElementById('horizontalChart');
+
+  if (horizontalChartEl) {
+    const horizontalChart = new Chart(
+      document.getElementById('horizontalChart'),
+      configHorizontal
+    );
+  }
+
+  const verticalChartEl = document.getElementById('verticalChart');
+  
+  if (verticalChartEl) {
+    const verticalChart = new Chart(
+      document.getElementById('verticalChart'),
+      configVertical
+    );
+  }  
+</script>
+<script>
+  const editor = document.querySelector('#editor');
+
+  if (editor) {
+    ClassicEditor
+      .create( document.querySelector('#editor') )
+      .then( editor => console.log( editor ))
+      .catch( error => console.error( error ));
+  }
+</script>

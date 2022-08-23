@@ -1,0 +1,89 @@
+.header-nav {
+  display: flex;
+
+  @include media(mobile) {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.header-nav__box {
+  display: none;
+
+  @include media(mobile) {
+    display: block;
+    position: relative;
+    width: 20%;
+  }
+}
+
+.header-link {
+  width: 67px;
+  height: 57px;
+  padding: 13px 20px;
+  background-color: $color-brown-2;
+  margin-bottom: 1px;
+
+  .edit-profile & {
+    background-color: $color-brown-4;
+  }
+
+  @include media(mobile) {
+    height: 45px;
+    width: auto;
+  }
+
+  &--btn {
+    padding: 0;
+    width: calc(20% - 1px);
+    margin-right: 1px;
+  }
+
+  &:hover {
+    color: $color-orange;
+  }
+
+  &:hover .btn__line {
+    background-color: $color-orange;
+  }
+}
+
+.header-nav__list {
+  padding: 0;
+  margin: 0;
+
+  @include media(mobile) {
+    width: 60%;
+  }
+}
+
+.header-nav__name {
+  font-family: $main-font;
+  letter-spacing: -0.27px;
+  color: $main-color-text;
+  flex-grow: 1;
+  padding: 16px 50px;
+  background-color: $color-brown-2;
+  margin-right: auto;
+  
+
+  @include media(mobile) {
+    order: 1;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    text-overflow: ellipsis;  //Добавляем многоточи//
+    white-space: nowrap;   //Текст не переносится//
+    overflow: hidden;   //Обрезаем всё за пределами блока//
+  }
+}
+
+.header-nav__btn {
+  display: none;
+  cursor: pointer;
+
+  @include media(tablet) {
+    display: block;
+  }
+}

@@ -1,0 +1,9 @@
+.main-info {
+  padding: 24px 0 50px 50px;
+  flex-grow: 1;
+  overflow-x: auto;
+
+  @include media(mobile) {
+    padding: 10px 0px 5px 0px;
+  }
+}

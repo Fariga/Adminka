@@ -1,0 +1,130 @@
+.sidebar-menu {
+  background-color: $color-brown-2;
+  box-shadow: 1px 0px 1px 0px rgba(24, 20, 17, 0.3);
+
+  @include media(mobile) {
+    width: 100%;
+    position: fixed;
+    left: -100%;
+    bottom: 0;
+    top: 78px;
+    background-color: $color-brown-9;
+    transition: left .5s;
+    z-index: 100;
+
+    &--open {
+      left: 0;
+    }
+  } 
+}
+
+.sidebar-menu__nav {
+  padding: 40px 10px 40px 25px;
+  width: 203px;
+}
+
+.sidebar-menu__item {
+  position: relative;
+  color: $color-text-2;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-orange;
+  }
+
+  & .submenu--open {
+    display: block;
+  }
+
+  @include media(mobile) {
+    text-align: center;
+  }
+}
+
+.sidebar-menu__icon {
+  margin-right: 20px;
+}
+
+.sidebar-menu__text {
+  font-family: $main-font;
+  font-size: 16px;
+  line-height: 2.94;
+  letter-spacing: -0.32px;
+  color: $color-text-2;
+  position: relative;
+
+  &:hover {
+    color: $color-orange;
+  }
+  
+  &--link,
+  &--btn {
+    display: flex;
+    align-items: center;
+
+    & span {
+      position: relative;
+      &::before {
+        content: "";
+        height: 1px;
+        background-color: chocolate;
+        position: absolute;
+        width: 0%;
+        bottom: 10px; 
+      }
+    }
+      
+    &:hover {
+      & span {
+        &::before {
+          width: 100%;
+          transition: 2s;
+        }
+      }     
+    }
+  }
+
+  // &--btn {
+  //   &::before {
+  //     content: "";
+  //     height: 1px;
+  //     background-color: chocolate;
+  //     position: absolute;
+  //     width: 0%;
+  //     bottom: 10px; 
+  //   }
+
+  //   &:hover {
+  //     &::before {
+  //       width: 100%;
+  //       transition: 2s;
+  //     }
+  //   }
+  // }
+
+  @include media(mobile) {
+    font-size: 13px;
+    color: $main-color-text;
+  }
+
+  &::after {
+    display: none;
+    content: "";
+    width: 5px;
+    height: 47px;
+    background-color: $color-orange;
+    position: absolute;
+    left: 174px;
+    top: 0;
+
+    .sidebar-menu__item--btn--open & {
+      display: block;
+
+      & svg {
+        align-self: flex-start;
+      }
+    }
+  }
+}
+
+

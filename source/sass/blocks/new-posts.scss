@@ -1,0 +1,47 @@
+.new-posts__title {
+  font-size: 24px;
+  line-height: 1;
+  color: $color-white;
+  letter-spacing: -0.48px;
+  margin-bottom: 8px;
+}
+
+.new-posts-describe {
+  margin-bottom: 25px;
+}
+
+.new-posts__input {
+  padding: 9px 15px;
+  background-color: transparent;
+  border: 1px solid $color-brown-13;
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.ck-content {
+  min-height: 300px;
+  background: transparent !important;
+
+  p {
+    color: $main-color-text;
+  }
+}
+
+.ck-editor__editable {
+  border: 1px solid $color-brown-13;
+  border-radius: 2px;
+}
+
+.ck {
+  margin-bottom: 22px;
+}
+
+.new-posts__btn {
+  min-width: 120px;
+  padding: 9px;
+  border: 1px solid $color-brown-13;
+  border-radius: 2px;
+  text-align: center;
+  margin-right: 14px;
+}

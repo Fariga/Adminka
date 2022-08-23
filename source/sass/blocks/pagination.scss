@@ -1,0 +1,37 @@
+.pagination__list {
+  display: flex;
+}
+
+.pagination__item {
+  position: relative;
+
+  &:hover {
+    z-index: 10;
+  }
+
+  &:not(:first-of-type) {
+    margin-left: -1px;
+  } 
+}
+
+.pagination__link {
+  padding: 6px;
+  border: 1px solid $color-brown-13;
+  min-width: 32px;
+  display: inline-block;
+
+  &:focus {
+    box-shadow: 0 0 0 1px rgba(86, 161, 247, 0.5);
+  }
+}
+
+.pagination__link--size {
+  min-width: 77px;
+}
+
+.pagination__text {
+  color: $main-color-text;
+  letter-spacing: -0.28px;
+  text-align: center;
+}
+

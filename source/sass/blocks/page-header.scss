@@ -1,0 +1,16 @@
+.page-header {
+  height: 57px;
+  margin-bottom: 1px;
+
+  @include media(mobile) {
+    height: 78px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+}
+
+
+
+
+

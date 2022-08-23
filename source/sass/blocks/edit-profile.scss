@@ -1,0 +1,57 @@
+.edit-profile {
+  position: relative; 
+
+  &:hover {
+    .edit-profile__list {
+      display: block;
+    }    
+  }
+
+  @include media(mobile) {
+    width: 20%;
+  }
+}
+
+.edit-profile__box {
+  // background-color: $color-brown-4;
+  display: flex;
+  align-items: center;
+  color: $color-brown-11;
+
+  & svg {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.edit-profile__list {
+  display: none;
+  padding: 11px 28px 11px 28px;
+  background-color: $color-brown-5;
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  min-width: 167px;
+  min-height: 120px;
+}
+
+.edit-profile__link {
+  font-family: $main-font;
+  font-size: 16px;
+  line-height: 2.94;
+  letter-spacing: -0.27px;
+  color: $color-text-2;
+
+  &:hover,
+  &:active {
+    color: $color-orange;
+  }
+
+  @include media(tablet) {
+    font-size: 14px;
+  }
+
+  @include media(mobile) {
+    font-size: 13px;
+  }
+}
